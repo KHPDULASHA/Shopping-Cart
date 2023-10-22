@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+  <style>
+    /* Style for phone cards */
+    .phone-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .phone-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Style for the shopping cart */
+    .cart {
+      width: 100%;
+      border: 1px solid #ebfc00;
+      padding: 10px;
+      margin: 10px;
+      background-color: #ebfc00;
+
+    }
+
+    .cart ul {
+      list-style-type: none;
+      padding: 0;
+      height: 250px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: center;
+    }
+
+    .item-div {
+      width: 100%;
+      height: 60px;
+      background-color: purple;
+      color: aliceblue;
+    }
+
+    .image-cart {
+      display: flex;
+      justify-content: end;
+      align-items: baseline;
+      width: 50%;
+      height: 100%;
+      position: relative;
+    }
+
+    .cart-inside {
+      display: flex;
+    }
+
+    .item-list {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+
+    }
+
+    /* Styling for the Remove button */
+    .remove-button {
+      background: red;
+      border: none;
+      cursor: pointer;
+      color: rgb(243, 243, 243);
+      /* Change the color to your preference */
+      font-size: 20px;
+      height: 10px;
+      width: 10px;
+      /* Adjust the size as needed */
+      margin-bottom: 10px;
+      border-radius: 20px;
+    }
+
+    .android-image {
+      position: absolute;
+      /* Set the image div to absolute positioning */
+      bottom: 0;
+      /* Position at the bottom */
+      right: 0;
+      /* Position at the right */
+      width: 50px;
+      height: 50px;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-container {
+      display: flex;
+      text-align: center;
+    }
+
+    .add-button {
+      background-color: purple;
+      color: aliceblue;
+      height: 30px;
+      width: auto;
+
+    }
+
+    .row {
+      width: 80%;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="item-div">
+        <h1 class="item-header">items</h1>
+      </div>
+      <div class="card-container">
+        <div class="phone-card">
+          <img style="height:190px;" src="./images/img1.jpg" alt="Phone 1">
+          <h2>REDMI 30 5G |2022|Cell Phone 5G</h2>
+          <p>Price: $400</p>
+          <button class="add-button" onclick="addToCart('REDMI 30 5G |2022|Cell Phone 5G', 400)">Add To Cart</button>
+        </div>
+        <div class="phone-card">
+          <img src="./images/img2.jpg" alt="Phone 1">
+          <h2>APPLE 12|2022|Cell Phone 5G</h2>
+          <p>Price: $300</p>
+          <button class="add-button" onclick="addToCart('APPLE 12 |2022|Cell Phone 5G', 300)">Add To Cart</button>
+        </div>
+        <div class="phone-card">
+          <img src="./images/img3.jpeg" alt="Phone 1">
+          <h2>SAMSUNG |2022|Cell Phone 5G</h2>
+          <p>Price: $800</p>
+          <button class="add-button" onclick="addToCart('SAMSUNG |2022|Cell Phone 5G', 800)">Add To Cart</button>
+        </div>
+        <div class="phone-card">
+          <img src="./images/img4.jpg" alt="Phone 1">
+          <h2>APPLE 15 |2022|Cell Phone 5G</h2>
+          <p>Price: $100</p>
+          <button class="add-button" onclick="addToCart('APPLE 15  |2022|Cell Phone 5G', 100)">Add To Cart</button>
+        </div>
+        <div class="phone-card">
+          <img src="./images/img5.jpeg" alt="Phone 1">
+          <h2>TCL 30 5G |2022|Cell Phone 5G</h2>
+          <p>Price: $900</p>
+          <button class="add-button" onclick="addToCart('TCL 30 5G |2022|Cell Phone 5G', 900)">Add To Cart</button>
+        </div>
+      </div>
+
+      <div class="cart">
+        <h2>Shopping Cart</h2>
+
+        <div class="cart-inside">
+          <div class="image">
+
+            <img style="display: flex;justify-content: center;" src="./images/cart.svg" height="400px" width="auto" alt="Phone 1">
+          </div>
+          <div class="item-list">
+            <ul id="cart-list"></ul>
+          </div>
+          <div class="image-cart"> <img src="./images/imageCart.gif" class="android-image" height="100px" alt="Phone 1">
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Function to add items to the shopping cart
+    function addToCart(phoneName, price) {
+      const cartList = document.getElementById("cart-list");
+      const listItem = document.createElement("li");
+      listItem.textContent = `${phoneName} - ${price}`;
+
+      // Add a Remove button
+      const removeButton = document.createElement("button");
+      removeButton.innerHTML = '<i class="fa fa-trash remove-button"> X</i>';
+      removeButton.onclick = function () {
+        cartList.removeChild(listItem);
+      };
+
+      listItem.appendChild(removeButton);
+      cartList.appendChild(listItem);
+    }
+  </script>
+</body>
+
+</html>
